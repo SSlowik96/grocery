@@ -17,7 +17,7 @@ WITH drop_nulls AS /* drop rows where key values are missing */
   AND Quantity > 0), /* quantity can't be lower than 0 */
 
 date_casting AS /* getting correct date types */
-(SELECT DISTINCT /*  deduplication */
+  (SELECT DISTINCT /*  deduplication */
     SalesID, 
     SalesPersonID,
     CustomerID,
@@ -29,7 +29,7 @@ date_casting AS /* getting correct date types */
     TRIM (TransactionNumber) AS TransactionNumber
     FROM drop_nulls)
 
-SELECT  
+SELECT  /* get product details */
     dc.SalesID, 
     dc.SalesPersonID,
     dc.CustomerID,
